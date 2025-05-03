@@ -2,19 +2,19 @@ import { AppBar } from "../components/AppBar"
 import { BlogCard } from "../components/BlogCard"
 import { useBlogs } from "../hooks"
 
-export const Blog = () => {
-    const {loading, blog} = useBlogs();
+export const Blogs = () => {
+    const {loading, blogs} = useBlogs();
 
     if(loading) {
         return <div>
             loading....
         </div>
     }
-    console.log("blogs", blog)
+    console.log("blogs", blogs)
     return <div>
         <AppBar/>
         {
-            blog.map((item) => <BlogCard authorName="david" title={item?.title} content={item?.content} publishedDate={item?.published} />)
+            blogs.map((blog) => <BlogCard authorName="david" title={blog?.title} content={blog?.content} publishedDate={blog?.published} />)
         }
         
     </div>
