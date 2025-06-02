@@ -13,7 +13,12 @@ const app = new Hono<{
 	}
 }>();
 
-app.use('/*', cors());
+app.use('/*', cors({
+  origin: '*',
+  allowMethods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowHeaders: ['Content-Type', 'Authorization'],
+}));
+
 app.get('/', (c) => c.text('Hono API is running!'))
 app.route('api/v1/user', userRouter)
 app.route('api/v1/blog', blogRouter)
